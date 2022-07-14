@@ -27,6 +27,16 @@ const lecheDeCacahuate = new Producto("Leche de Cacahuate", ["Bebida", "Libre de
 const castaniasDeCaju = new Producto("Castañas de Cajú", ["Comestible", "Libre de TACC", "Envasadas"], 400);
 const barraCoco = new Producto("Barra de coco", ["Comestible", "Azúcar", "Coco"], 100);
 
+// DECLARAMOS LOS ELEMENTOS
+
+
+// ELEMENTOS CÓDIGO DE DESCUENTO
+const inputCodigo = document.querySelector("#main__codigo__input");
+const btnCodigoSend = document.querySelector("#main__codigo__send");
+const seccionIngresarCodigo = document.querySelector("#main__div__ingreso__codigo")
+const cartelCodigoAplicado = document.querySelector("#main__codigo__aplicado");
+
+
 
 // FUNCIONES
 
@@ -36,6 +46,17 @@ const descuento = (total) => total * 0.9;
 
 const alertTotal = (total) => alert(`Tu total hasta ahora es de ${total}`);
 
+const notificacionCodigo = (texto, bgColor) => {
+    Toastify({
+        text: texto,
+        gravity: "top",
+        position: "right",
+        duration: 3000,
+        style: {
+            background: bgColor,
+        }
+    }).showToast();
+}
 
 
 // COMIENZO DE INTERACCIÓN CON EL USUARIO
@@ -93,14 +114,21 @@ while (ingresoPrimerProducto !== "salir") {
 
 console.log(listaDeProductosUsuario);
 
+// CODIGO DE DESCUENTO
+
+btnCodigoSend.addEventListener("click", () => {
+    let inputValue = inputCodigo.value.toLowerCase();
+
+    if (inputValue !== "tupromo2022") {
+        notificacionCodigo("No existe este código.", "red");
+    } else {
+        seccionIngresarCodigo.remove();
+        notificacionCodigo("Código aceptado!", "#94B49F");
+        cartelCodigoAplicado.style.display = "block";
+
+    }
+
+    inputCodigo.value = "";
 
 
-
-
-
-
-
-
-
-
-
+})
