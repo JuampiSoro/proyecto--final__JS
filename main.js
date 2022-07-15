@@ -36,6 +36,11 @@ const btnCodigoSend = document.querySelector("#main__codigo__send");
 const seccionIngresarCodigo = document.querySelector("#main__div__ingreso__codigo")
 const cartelCodigoAplicado = document.querySelector("#main__codigo__aplicado");
 
+// CODIGO DE DESCUENTO EN LOCAL STORAGE
+
+const consultaLocalCodigo = localStorage.getItem("CodigoDescuento");
+const jsonLocalCodigo = JSON.parse(consultaLocalCodigo);
+
 
 
 // FUNCIONES
@@ -116,6 +121,11 @@ console.log(listaDeProductosUsuario);
 
 // CODIGO DE DESCUENTO
 
+if (jsonLocalCodigo == true) {
+    seccionIngresarCodigo.remove();
+    cartelCodigoAplicado.style.display = "block";
+}
+
 btnCodigoSend.addEventListener("click", () => {
     let inputValue = inputCodigo.value.toLowerCase();
 
@@ -125,10 +135,14 @@ btnCodigoSend.addEventListener("click", () => {
         seccionIngresarCodigo.remove();
         notificacionCodigo("Código aceptado!", "#94B49F");
         cartelCodigoAplicado.style.display = "block";
-
+        localStorage.setItem("CodigoDescuento", true);
     }
 
     inputCodigo.value = "";
 
 
 })
+
+
+
+
