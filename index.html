@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veggie</title>
+    <link rel="icon" href="imgs/vegetarian-svgrepo-com-01.svg">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <link rel="stylesheet" href="index.css">
@@ -16,14 +17,14 @@
         <img src="imgs/logo-01.png" alt="logo" id="nav--logo" class="nav__logo">
 
         <ul id="nav--ul" class="nav__ul">
-            <li class="nav__li">Home</li>
-            <li class="nav__li">Carrito</li>
-            <li class="nav__li">Contacto</li>
+            <li class="nav__li"><a href="#productos">Productos</a></li>
+            <li class="nav__li"><a href="#carrito">Carrito</a></li>
+            <li class="nav__li"><a href="https://www.linkedin.com/in/juampi-soro/" target="_blank">Mi contacto</a></li>
             <li class="nav__li"><button class="nav__btn--mode" id="nav--btn__mode">Modo oscuro</button></li>
         </ul>
     </nav>
     <main class="main" id="main">
-        <h2 class="main__title">Productos</h2>
+        <h2 class="main__title" id="productos">Productos</h2>
         <div class="main__lista__productos">
             <div class="main__producto">
                 <img src="imgs/castanas-de-caju-saladas.jpeg" alt="castañas de cajú" class="main__producto__img">
@@ -33,10 +34,10 @@
             </div>
         </div>
 
-        <h2 class="main__title--carrito">Carrito de compras</h2>
+        <h2 class="main__title--carrito" id="carrito">Carrito de compras</h2>
         <div class="main__carrito" id="main__carrito">
-            <!-- <p class="main__carrito__p" id="main__carrito__p">Por el momento no hay nada en el carrito.</p> -->
-            <div class="main__carrito__producto" id="main__carrito__producto">
+            <p class="main__carrito__p" id="main__carrito__p">Por el momento no hay nada en el carrito.</p>
+            <!-- <div class="main__carrito__producto" id="main__carrito__producto">
                 <img src="imgs/castanas-de-caju-saladas.jpeg" alt="castañas de cajú"
                     class="main__carrito__producto__img">
                 <div>
@@ -54,7 +55,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
         <div class="main__codigo">
             <div id="main__div__ingreso__codigo">

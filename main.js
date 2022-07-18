@@ -18,14 +18,31 @@ let total = 0;
 // DECLARAMOS LA LISTA DE PRODUCTOS QUE QUIERE COMPRAR EL USUARIO
 const listaDeProductosUsuario = [];
 
-// DECLARAMOS LOS ELEMENTOS DEL INDEX
-const btnModeDark = document.querySelector("#nav--btn__mode");
 
 
 // DECLARAMOS LOS PRODUCTOS
 const lecheDeCacahuate = new Producto("Leche de Cacahuate", ["Bebida", "Libre de TACC", "Orgánico"], 270);
 const castaniasDeCaju = new Producto("Castañas de Cajú", ["Comestible", "Libre de TACC", "Envasadas"], 400);
 const barraCoco = new Producto("Barra de coco", ["Comestible", "Azúcar", "Coco"], 100);
+
+
+// ARRAY CON PRODUCTOS
+
+const productos = [
+    {
+        nombre: "Leche de Cacahuate",
+        precio: 270
+    },
+    {
+        nombre: "Castañas de Cajú",
+        precio: 400,
+    },
+    {
+        nombre: "Barra de coco",
+        precio: 100,
+    }
+
+]
 
 // DECLARAMOS LOS ELEMENTOS
 
@@ -65,8 +82,6 @@ const notificacionCodigo = (texto, bgColor) => {
 
 
 // COMIENZO DE INTERACCIÓN CON EL USUARIO
-alert("Bienvenido a Veggie!");
-
 let ingresoPrimerProducto = "";
 
 while (ingresoPrimerProducto !== "salir") {
@@ -92,34 +107,14 @@ while (ingresoPrimerProducto !== "salir") {
         alertTotal(total);
         listaDeProductosUsuario.push([barraCoco.nombre, cantidad]);
 
-    } else {
-        if (total > 0) {
-            alert("Muchas gracias por confiar en nosotros.")
-
-            // PREGUNTA SI EL USUARIO TIENE CODIGO DE DESCUENTO
-
-            const preguntaSiTieneCodigoDescuento = prompt("Tiene codigo de descuento? Responda con un SI o un NO").toLowerCase();
-
-            if (preguntaSiTieneCodigoDescuento == "si") {
-                const ingresoCodigoDescuento = prompt("Ingresa el codigo de descuento. En la consola lo podes ver tambien").toLowerCase();
-
-                if (ingresoCodigoDescuento == "tupromo2022") {
-                    console.log("Ingresaste correctamente el codigo de descuento. ")
-                    alert(`El total con el descuento del 10% incluido es de ${descuento(total)}`);
-                }
-            }
-
-            alert(`El total es: $${total}`);
-
-        } else {
-            alert("No compraste nada :(")
-        }
     }
 }
 
 console.log(listaDeProductosUsuario);
 
+
 // CODIGO DE DESCUENTO
+
 
 if (jsonLocalCodigo == true) {
     seccionIngresarCodigo.remove();
@@ -129,9 +124,9 @@ if (jsonLocalCodigo == true) {
 btnCodigoSend.addEventListener("click", () => {
     let inputValue = inputCodigo.value.toLowerCase();
 
-    if (inputValue !== "tupromo2022") {
-        notificacionCodigo("No existe este código.", "red");
-    } else {
+    inputValue !== "tupromo2022" && notificacionCodigo("No existe este código.", "red");
+
+    if (inputValue == "tupromo2022") {
         seccionIngresarCodigo.remove();
         notificacionCodigo("Código aceptado!", "#94B49F");
         cartelCodigoAplicado.style.display = "block";
