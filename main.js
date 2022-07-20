@@ -4,47 +4,53 @@ console.log("El codigo de descuento es: TUPROMO2022");
 
 
 // CREAMOS LA CLASE DE PRODUCTO
-class Producto {
-    constructor(nombre, categorias, precio) {
-        this.nombre = nombre;
-        this.categorias = categorias;
-        this.precio = precio;
-    }
-}
+// class Producto {
+//     constructor(nombre, categorias, precio) {
+//         this.nombre = nombre;
+//         this.categorias = categorias;
+//         this.precio = precio;
+//     }
+// }
 
 // DECLARAMOS TOTAL DE PRECIO
 let total = 0;
 
-// DECLARAMOS LA LISTA DE PRODUCTOS QUE QUIERE COMPRAR EL USUARIO
-const listaDeProductosUsuario = [];
-
-
 
 // DECLARAMOS LOS PRODUCTOS
-const lecheDeCacahuate = new Producto("Leche de Cacahuate", ["Bebida", "Libre de TACC", "Orgánico"], 270);
-const castaniasDeCaju = new Producto("Castañas de Cajú", ["Comestible", "Libre de TACC", "Envasadas"], 400);
-const barraCoco = new Producto("Barra de coco", ["Comestible", "Azúcar", "Coco"], 100);
+// const lecheDeCacahuate = new Producto("Leche de Cacahuate", ["Bebida", "Libre de TACC", "Orgánico"], 270);
+// const castaniasDeCaju = new Producto("Castañas de Cajú", ["Comestible", "Libre de TACC", "Envasadas"], 400);
+// const barraCoco = new Producto("Barra de coco", ["Comestible", "Azúcar", "Coco"], 100);
 
 
 // ARRAY CON PRODUCTOS
 
 const productos = [
     {
-        nombre: "Leche de Cacahuate",
-        precio: 270
-    },
-    {
         nombre: "Castañas de Cajú",
         precio: 400,
     },
     {
-        nombre: "Barra de coco",
+        nombre: "Leche de Cacahuate",
+        precio: 270
+    },
+    {
+        nombre: "Maní tostado salado",
         precio: 100,
+    },
+    {
+        nombre: "Maní Japonés Natural",
+        precio: 200,
     }
 
 ]
 
+
+
 // DECLARAMOS LOS ELEMENTOS
+
+// ELEMENTO LISTA DE PRODUCTOS - PARA RENDERIZAR PRODUCTOS
+
+const listaProductos = document.querySelector(".main__lista__productos");
 
 
 // ELEMENTOS CÓDIGO DE DESCUENTO
@@ -80,8 +86,26 @@ const notificacionCodigo = (texto, bgColor) => {
     }).showToast();
 }
 
+const renderProductos = () => {
+    for (let i = 0; i < productos.length; i++) {
+        const cardProducto = document.createElement("div");
+        cardProducto.classList.add("main__producto");
+
+        cardProducto.innerHTML = `<img src="imgs/${i}.jpeg" alt="${productos[i].nombre}" class="main__producto__img">
+        <h4 class="main__producto__title">${productos[i].nombre}</h4>
+        <p class="main__producto__precio">${productos[i].precio}$</p>
+        <button class="main__producto__btn"><span class="main__producto__btn__plus">+</span></button>`
+
+        listaProductos.append(cardProducto);
+    }
+}
 
 // COMIENZO DE INTERACCIÓN CON EL USUARIO
+
+
+renderProductos();
+
+
 let ingresoPrimerProducto = "";
 
 while (ingresoPrimerProducto !== "salir") {
@@ -93,24 +117,22 @@ while (ingresoPrimerProducto !== "salir") {
         let cantidad = funcionEleccionProducto(lecheDeCacahuate.nombre);
         total += cantidad * lecheDeCacahuate.precio;
         alertTotal(total);
-        listaDeProductosUsuario.push([lecheDeCacahuate.nombre, cantidad]);
+
 
     } else if (ingresoPrimerProducto == "castañas de caju" || ingresoPrimerProducto == "castañas de cajú") {
         let cantidad = funcionEleccionProducto(castaniasDeCaju.nombre);
         total += cantidad * castaniasDeCaju.precio;
         alertTotal(total);
-        listaDeProductosUsuario.push([castaniasDeCaju.nombre, cantidad]);
+
 
     } else if (ingresoPrimerProducto == "barra de coco") {
         let cantidad = funcionEleccionProducto(barraCoco.nombre);
         total += cantidad * barraCoco.precio;
         alertTotal(total);
-        listaDeProductosUsuario.push([barraCoco.nombre, cantidad]);
+
 
     }
 }
-
-console.log(listaDeProductosUsuario);
 
 
 // CODIGO DE DESCUENTO
