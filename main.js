@@ -16,33 +16,31 @@ console.log("El codigo de descuento es: TUPROMO2022");
 let total = 0;
 
 
-// DECLARAMOS LOS PRODUCTOS
-// const lecheDeCacahuate = new Producto("Leche de Cacahuate", ["Bebida", "Libre de TACC", "Orgánico"], 270);
-// const castaniasDeCaju = new Producto("Castañas de Cajú", ["Comestible", "Libre de TACC", "Envasadas"], 400);
-// const barraCoco = new Producto("Barra de coco", ["Comestible", "Azúcar", "Coco"], 100);
-
 
 // ARRAY CON PRODUCTOS
 
-const productos = [
-    {
-        nombre: "Castañas de Cajú",
-        precio: 400,
-    },
-    {
-        nombre: "Leche de Cacahuate",
-        precio: 270
-    },
-    {
-        nombre: "Maní tostado salado",
-        precio: 100,
-    },
-    {
-        nombre: "Maní Japonés Natural",
-        precio: 200,
-    }
+// const productos = [
+//     {
+//         nombre: "Castañas de Cajú",
+//         precio: 400,
+//     },
+//     {
+//         nombre: "Leche de Cacahuate",
+//         precio: 270
+//     },
+//     {
+//         nombre: "Maní tostado salado",
+//         precio: 100,
+//     },
+//     {
+//         nombre: "Maní Japonés Natural",
+//         precio: 200,
+//     }
 
-]
+// ]
+
+
+
 
 
 
@@ -68,6 +66,33 @@ const jsonLocalCodigo = JSON.parse(consultaLocalCodigo);
 
 // FUNCIONES
 
+// FUNCION PARA RENDER DE CADA PRODUCTO
+const renderEachProducto = (numeroImagen, nombre, precio) => {
+
+    const cardProducto = document.createElement("div");
+    cardProducto.classList.add("main__producto");
+
+    cardProducto.innerHTML = `<img src="imgs/${numeroImagen}.jpeg" alt="${nombre}" class="main__producto__img">
+        <h4 class="main__producto__title">${nombre}</h4>
+        <p class="main__producto__precio">${precio}$</p>
+        <button class="main__producto__btn"><span class="main__producto__btn__plus">+</span></button>`
+
+    listaProductos.append(cardProducto);
+}
+
+
+
+// FUNCION PARA PEDIR PRODUCTOS CON JSON Y RENDER DE CADA PRODUCTO
+const pedirProductos = async () => {
+    const resp = await fetch("productos.json");
+    const data = await resp.json();
+
+    data.forEach((producto) => {
+        renderEachProducto(producto.numeroImagen, producto.nombre, producto.precio)
+    });
+}
+
+
 const funcionEleccionProducto = (productoElegido) => parseInt(prompt(`Ingresaste ${productoElegido}. Ingresá la cantidad que queres de este producto.`));
 
 const descuento = (total) => total * 0.9;
@@ -86,25 +111,10 @@ const notificacionCodigo = (texto, bgColor) => {
     }).showToast();
 }
 
-const renderProductos = () => {
-    for (let i = 0; i < productos.length; i++) {
-        const cardProducto = document.createElement("div");
-        cardProducto.classList.add("main__producto");
-
-        cardProducto.innerHTML = `<img src="imgs/${i}.jpeg" alt="${productos[i].nombre}" class="main__producto__img">
-        <h4 class="main__producto__title">${productos[i].nombre}</h4>
-        <p class="main__producto__precio">${productos[i].precio}$</p>
-        <button class="main__producto__btn"><span class="main__producto__btn__plus">+</span></button>`
-
-        listaProductos.append(cardProducto);
-    }
-}
 
 // COMIENZO DE INTERACCIÓN CON EL USUARIO
 
-
-renderProductos();
-
+pedirProductos();
 
 let ingresoPrimerProducto = "";
 

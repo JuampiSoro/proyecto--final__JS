@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "Castañas de Cajú",
+        "precio": 400,
+        "numeroImagen": 0
+    },
+    {
+        "nombre": "Leche de Cacahuate",
+        "precio": 270,
+        "numeroImagen": 1
+    },
+    {
+        "nombre": "Maní tostado salado",
+        "precio": 100,
+        "numeroImagen": 2
+    },
+    {
+        "nombre": "Maní Japonés Natural",
+        "precio": 200,
+        "numeroImagen": 3
+    }
+]
