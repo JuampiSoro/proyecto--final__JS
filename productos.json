@@ -1,22 +1,32 @@
 [
     {
-        "nombre": "Castañas de Cajú",
-        "precio": 400,
-        "numeroImagen": 0
+        "nombre": "Postre sabor chocolate",
+        "precio": 284,
+        "numeroImagen": 0,
+        "cantidad": 1
     },
     {
-        "nombre": "Leche de Cacahuate",
-        "precio": 270,
-        "numeroImagen": 1
+        "nombre": "Veganesa",
+        "precio": 164,
+        "numeroImagen": 1,
+        "cantidad": 1
     },
     {
-        "nombre": "Maní tostado salado",
-        "precio": 100,
-        "numeroImagen": 2
+        "nombre": "Helado de chocolate",
+        "precio": 385,
+        "numeroImagen": 2,
+        "cantidad": 1
     },
     {
-        "nombre": "Maní Japonés Natural",
+        "nombre": "Yogur sabor durazno",
         "precio": 200,
-        "numeroImagen": 3
+        "numeroImagen": 3,
+        "cantidad": 1
+    },
+    {
+        "nombre": "Yogur sabor vainilla",
+        "precio": 200,
+        "numeroImagen": 4,
+        "cantidad": 1
     }
 ]
